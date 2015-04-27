@@ -20,18 +20,23 @@
 	<div id="header">
 		Hier ist der Header
 	</div>
-	
-	<div id="login">
-		<ui:insert name="login"></ui:insert>
-	</div>
+ 
 
+	 
 	<ui:include src="/faces/searchBar.xhtml"></ui:include>
 	
 	<div id="content">
 		<ui:insert name="content"></ui:insert>
+		<ui:insert name="login"></ui:insert>
+		
 	</div>
 		
 	<ui:include src="/faces/footer.xhtml"></ui:include>
+	
+	<h:form>
+ 		<h:commandButton action="#{einkauf.getAdminLink}" value="Medikament anlegen" />
+ 	</h:form>
+	
 	
 </div>
 </body>

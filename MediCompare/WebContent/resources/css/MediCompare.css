@@ -20,7 +20,7 @@
 	height: 50px;
 	margin-top: 50px;
 	margin-left:10%;
-	background-color: #FFFFFF;
+	background-color: grey;
 	postition:fixed;
 }
 
@@ -41,32 +41,48 @@
 	background-color: grey;
 }
 
+
+a:link {
+    color: #FFFFFF;
+}
+a:visited {
+    color: #FFFFFF;
+}
+a:hover {
+    color: #FFFFFF;
+}
+a:active {
+    color: #FFFFFF;
+}
+ul {
+    list-style-image: url('../img/heart-beat.png');
+} 
 #categories{
-	width: 200px;;
+	width: 20%;
 	height: 300px;
 	margin-top: 10px;
 	margin-left: 5px;
 	float:left;
-	background-color: #4FFFA7;
+	background-color: #B8E68A;
 }
 
 #searchResult{
-	width: 600px;
+	width: 49%;
 	height: 300px;
 	margin-top: 10px;
 	margin-left: 5px;
 	float: left;
-	background-color: #A4FF4F;
+	background-color: #B8E68A;
 }
 
 
 #offerOfTheDay{
-	width: 200px;
+	width: 20%;
 	height: 300px;
 	margin-top: 10px;
 	margin-right: 5px;
 	float: right;
-	background-color: #4FFFA7;
+	background-color: #B8E68A;
 }
 
 

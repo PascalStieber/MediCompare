@@ -9,8 +9,11 @@
       <class>de.medicompare.entities.GesamtBestellung</class>
         
       <properties>
-         <!-- Properties for Hibernate 
-         <property name="hibernate.hbm2ddl.auto" value="create-drop" />-->
+         <!-- Properties for Hibernate
+         <property name="hibernate.hbm2ddl.auto" value="update" /> 
+         <property name="hibernate.hbm2ddl.auto" value="create-drop" /> 
+         -->
+         
          <property name="hibernate.hbm2ddl.auto" value="update" />
          
          
