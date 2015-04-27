@@ -1,2 +1,2 @@
 eclipse.preferences.version=1
-org.jboss.ide.eclipse.as.core.singledeployable.deployableList=my-aktion-advanced/my-aktion/src/main/webapp/WEB-INF/templates\nWebContent/resources/css\nWebContent/WEB-INF/templates\n
+org.jboss.ide.eclipse.as.core.singledeployable.deployableList=WebContent/resources/css\nWebContent/WEB-INF/templates\n
