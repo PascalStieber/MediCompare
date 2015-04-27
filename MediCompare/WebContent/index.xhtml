@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+         
+<ui:composition template="/WEB-INF/templates/default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+
+<ui:define name="content">
+	
+ 	<div id="categories">
+ 		<ui:include src="/faces/categories.xhtml"></ui:include>
+ 	</div>
+ 	
+ 	<div id="searchResult">
+		<h:form id="form_index">
+	 		<h:commandButton type="submit" id="Einkauf" value="Einkauf" action="#{einkauf.getEinkaufsliste()}" />
+	 	</h:form>
+ 	</div>
+ 	
+ 	<div id="offerOfTheDay">
+ 		<ui:include src="/faces/offerOfTheDay.xhtml"></ui:include>
+ 	</div>
+ 	<h:form>
+ 		<h:commandButton action="#{einkauf.getAdminLink}" value="Medikament anlegen" />
+ 	</h:form>
+ 	<h:link outcome="/admin/index.xhtml" value="test"/>
+</ui:define>
+</ui:composition>

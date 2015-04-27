@@ -1,0 +1,80 @@
+@CHARSET "ISO-8859-1";
+
+#box{
+	width: 80%;
+	height: 600px;
+    margin-top: 5px;
+	background-color: #B8E68A;
+	position: fixed; 
+	margin-left: 10%;
+}
+
+#headerSocialBar{
+	padding-top: 10px;
+	width: 120px;
+	float: right;
+}
+
+#header{
+	width: 80%;
+	height: 50px;
+	margin-top: 50px;
+	margin-left:10%;
+	background-color: #FFFFFF;
+	postition:fixed;
+}
+
+#searchBar{
+	width: 80%;
+	height: 20px;
+	margin-top: 5px;
+	margin-left:10%;
+	postition:fixed;
+	text-align: center;
+}
+
+#content{
+	width: 80%;
+	height: 400px;
+	margin-top: 10px;
+	margin-left: 10%;
+	background-color: grey;
+}
+
+#categories{
+	width: 200px;;
+	height: 300px;
+	margin-top: 10px;
+	margin-left: 5px;
+	float:left;
+	background-color: #4FFFA7;
+}
+
+#searchResult{
+	width: 600px;
+	height: 300px;
+	margin-top: 10px;
+	margin-left: 5px;
+	float: left;
+	background-color: #A4FF4F;
+}
+
+
+#offerOfTheDay{
+	width: 200px;
+	height: 300px;
+	margin-top: 10px;
+	margin-right: 5px;
+	float: right;
+	background-color: #4FFFA7;
+}
+
+
+#footer{
+	width: 80%;
+	text-align: center;
+	color: #FFFFFF;
+	background-color: #000000;
+	margin-left:10%;
+	margin-top: 20px;
+}
