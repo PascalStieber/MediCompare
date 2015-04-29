@@ -8,6 +8,7 @@ import javax.persistence.Table;
 import de.medicompare.entities.GesamtBestellung;
 import java.util.Collection;
 import javax.persistence.ManyToMany;
+import javax.persistence.GeneratedValue;
 
 @Entity
 @Table(name = "Medikament")
@@ -19,11 +20,12 @@ public class Medikament implements Serializable {
 	}
 
 	@Id
+	@GeneratedValue
 	private long id;
 	private String bezeichnung;
 	private String hersteller;
 	private String anzahlPackungsInhalt;
-	private String pZN;
+	private String pzn;
 	@ManyToMany
 	private Collection<GesamtBestellung> gesamtBestellung;
 
@@ -59,12 +61,12 @@ public class Medikament implements Serializable {
 		this.anzahlPackungsInhalt = param;
 	}
 
-	public String getPZN() {
-		return pZN;
+	public String getPzn() {
+		return pzn;
 	}
 
-	public void setPZN(String param) {
-		this.pZN = param;
+	public void setPzn(String param) {
+		this.pzn = param;
 	}
 
 	public Collection<GesamtBestellung> getGesamtBestellung() {

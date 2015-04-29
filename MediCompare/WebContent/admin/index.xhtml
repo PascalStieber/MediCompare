@@ -12,12 +12,12 @@
 <ui:define name="content">
 	<h4>Neues Medikament anlegen:</h4>
 	<h:form>		
-		PZN:<h:inputText value="#{einkauf.medikament.pZN}"  />
-		Hersteller:<h:inputText value="#{einkauf.medikament.Hersteller}"  />
-		Bezeichnung:<h:inputText value="#{einkauf.medikament.Bezeichnung}"  />
-		Anzahl Packungsinhalt:<h:inputText value="#{einkauf.medikament.AnzahlPackungsInhalt}"  />
+		PZN:<h:inputText value="#{einkauf.medikament.pzn}"  /><br />
+		Hersteller:<h:inputText value="#{einkauf.medikament.hersteller}"  /><br />
+		Bezeichnung:<h:inputText value="#{einkauf.medikament.bezeichnung}"  /><br />
+		Anzahl Packungsinhalt:<h:inputText value="#{einkauf.medikament.anzahlPackungsInhalt}"  /><br />
 		
-		<h:commandButton action="einkauf.speicherMedikament" value="Medikament Speichern" />
+		<h:commandButton action="#{einkauf.speicherMedikament}" value="Medikament Speichern" />
 	</h:form>
  	
 </ui:define>

@@ -9,6 +9,7 @@ import de.medicompare.entities.Medikament;
 import javax.persistence.ManyToOne;
 import java.util.Collection;
 import javax.persistence.ManyToMany;
+import javax.persistence.GeneratedValue;
 
 @Entity
 public class GesamtBestellung implements Serializable {
@@ -19,6 +20,7 @@ public class GesamtBestellung implements Serializable {
 	}
 
 	@Id
+	@GeneratedValue
 	private long id;
 	@ManyToOne
 	private Person person;

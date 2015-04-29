@@ -8,6 +8,11 @@ import javax.persistence.Table;
 import de.medicompare.entities.GesamtBestellung;
 import java.util.Collection;
 import javax.persistence.OneToMany;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.AUTO;
+import static javax.persistence.GenerationType.SEQUENCE;
+import static javax.persistence.GenerationType.IDENTITY;
+import static javax.persistence.GenerationType.TABLE;
 
 @Entity
 @Table(name = "Person")
@@ -19,6 +24,7 @@ public class Person implements Serializable {
 	}
 
 	@Id
+	@GeneratedValue
 	private long id;
 	private String vorname;
 	private String nachname;
