@@ -18,26 +18,22 @@
 	<ui:include src="/faces/socialMediaBar.xhtml"></ui:include>
 	
 	<div id="header">
-		Hier ist der Header
+		<h:graphicImage id="headerBarImage" library="img" name="apfel-gesund-logo.png"/>
+		<ui:include src="/faces/searchBar.xhtml"></ui:include>
 	</div>
  
 
 	 
-	<ui:include src="/faces/searchBar.xhtml"></ui:include>
+	
 	
 	<div id="content">
 		<ui:insert name="content"></ui:insert>
 		<ui:insert name="login"></ui:insert>
 		
 	</div>
-		
+			
 	<ui:include src="/faces/footer.xhtml"></ui:include>
-	
-	<h:form>
- 		<h:commandButton action="#{einkauf.getAdminLink()}" value="Medikament anlegen" />
- 	</h:form>
-	
-	
 </div>
+
 </body>
 </html>
