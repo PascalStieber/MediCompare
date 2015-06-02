@@ -5,6 +5,7 @@
 <ui:composition template="/WEB-INF/templates/default.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
@@ -19,6 +20,30 @@
 		
 		<h:commandButton action="#{einkauf.speicherMedikament}" value="Medikament Speichern" />
 	</h:form>
+	<br></br>
+		
+		<h:dataTable value="#{einkauf.getAllMedikamente()}" var="medikament">
+ 	  		<h:column>
+    			<f:facet name="header">ID</f:facet>
+    			#{medikament.id}
+    		</h:column>
+ 			<h:column>
+    			<f:facet name="header">PZN</f:facet>
+    			#{medikament.pzn}
+    		</h:column>
+    		<h:column>
+    			<f:facet name="header">Bezeichnung</f:facet>
+    			#{medikament.bezeichnung}
+    		</h:column>
+    		<h:column>
+    			<f:facet name="header">Hersteller</f:facet>
+    			#{medikament.hersteller}
+    		</h:column>
+    		<h:column>
+    			<f:facet name="header">Anz. Packungsinhalt</f:facet>
+    			#{medikament.anzahlPackungsInhalt}
+    		</h:column>
+        </h:dataTable>
  	
 </ui:define>
 </ui:composition>

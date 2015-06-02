@@ -1,5 +1,8 @@
 package de.medicompare.boundary;
 
+import java.util.List;
+
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateful;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -23,7 +26,7 @@ public class Einkauf {
 	private Medikament medikament = new Medikament() ;
 	
 	
-//	@PostConstruct
+	@PostConstruct
 	public void init(){
 		Person person = new Person();		
 		person.setVorname("Pascal");
@@ -36,6 +39,11 @@ public class Einkauf {
 	
 	public Medikament getMedikament(){
 		return this.medikament;
+	}
+	
+	public List<Medikament> getAllMedikamente(){
+		List<Medikament> lMedikamentenListe = medikamentControl.findAllMedikamente();
+		return lMedikamentenListe;
 	}
 	
 	public String speicherMedikament(){

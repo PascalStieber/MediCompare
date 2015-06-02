@@ -3,6 +3,8 @@ package de.medicompare.rest;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.persistence.NamedQuery;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -16,36 +18,33 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 
+import de.medicompare.control.MedikamentControl;
 import de.medicompare.entities.Medikament;
 
 @RequestScoped
 @Path("/medikamente")
 public class MedikamentService {
 
+	@Inject
+	MedikamentControl mMedikamentControl;
+	
 	@POST
 	@Consumes("application/json")
 	public Response create(final Medikament medikament) {
-		//TODO: process the given medikament 
-		//here we use Medikament#getId(), assuming that it provides the identifier to retrieve the created Medikament resource. 
-		return Response.created(
-				UriBuilder.fromResource(MedikamentService.class)
-						.path(String.valueOf(medikament.getId())).build())
-				.build();
+		
+//		return Response.created(UriBuilder.fromResource(MedikamentService.class).path(String.valueOf(medikament.getId())).build()).build();
+		
+		return Response.ok(medikament).build();
 	}
 
+	
+	//bsp: http://localhost:8081/MediCompare/rest/medikamente/2
 	@GET
 	@Path("/{id:[0-9][0-9]*}")
 	@Produces("application/json")
 	public Response findById(@PathParam("id") final Long id) {
-		//TODO: retrieve the medikament 
-		Medikament medikament = new Medikament();
-		medikament.setId(1);
-		medikament.setAnzahlPackungsInhalt("200");
-		medikament.setBezeichnung("Kopfschmerztabletten");
-		medikament.setHersteller("Ratiopharm");
-		medikament.setPzn("132456789");
-		
-		return Response.ok(medikament).build();
+		List<Medikament> lMedikamentList = mMedikamentControl.findMedikamentByID(id);		
+		return Response.ok(lMedikamentList).build();
 	}
 
 	@GET

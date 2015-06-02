@@ -4,12 +4,21 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
 import de.medicompare.entities.GesamtBestellung;
+
 import java.util.Collection;
+
 import javax.persistence.ManyToMany;
 import javax.persistence.GeneratedValue;
-
+@NamedQueries({
+	@NamedQuery(name="Medikament.findAll", query="SELECT m FROM Medikament m"),
+	@NamedQuery(name="Medikament.findByPZN", query="SELECT m FROM Medikament m WHERE m.pzn = :pzn"),
+	@NamedQuery(name="Medikament.findByID", query="SELECT m FROM Medikament m WHERE m.id = :id")
+})
 @Entity
 @Table(name = "Medikament")
 public class Medikament implements Serializable {
