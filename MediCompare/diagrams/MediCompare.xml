@@ -13,7 +13,7 @@
 	<entity>
 		<entity-name>de.medicompare.entities.Medikament</entity-name>
 		<entity-width>161</entity-width>
-		<entity-height>206</entity-height>
+		<entity-height>246</entity-height>
 		<entity-X-Coordinate>620</entity-X-Coordinate>
 		<entity-Y-Coordinate>18</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>

@@ -1,24 +1,23 @@
 package de.medicompare.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 
+import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
-import de.medicompare.entities.GesamtBestellung;
-
-import java.util.Collection;
-
-import javax.persistence.ManyToMany;
-import javax.persistence.GeneratedValue;
 @NamedQueries({
-	@NamedQuery(name="Medikament.findAll", query="SELECT m FROM Medikament m"),
-	@NamedQuery(name="Medikament.findByPZN", query="SELECT m FROM Medikament m WHERE m.pzn = :pzn"),
-	@NamedQuery(name="Medikament.findByID", query="SELECT m FROM Medikament m WHERE m.id = :id")
-})
+		@NamedQuery(name = "Medikament.findAll", query = "SELECT m FROM Medikament m"),
+		@NamedQuery(name = "Medikament.findByPZN", query = "SELECT m FROM Medikament m WHERE m.pzn = :pzn"),
+		@NamedQuery(name = "Medikament.findByID", query = "SELECT m FROM Medikament m WHERE m.id = :id") })
 @Entity
 @Table(name = "Medikament")
 public class Medikament implements Serializable {
@@ -37,6 +36,11 @@ public class Medikament implements Serializable {
 	private String pzn;
 	@ManyToMany
 	private Collection<GesamtBestellung> gesamtBestellung;
+	@Lob
+	@Basic
+	private String bild;
+	@Transient
+	private boolean editable;
 
 	public long getId() {
 		return id;
@@ -84,6 +88,22 @@ public class Medikament implements Serializable {
 
 	public void setGesamtBestellung(Collection<GesamtBestellung> param) {
 		this.gesamtBestellung = param;
+	}
+
+	public String getBild() {
+		return bild;
+	}
+
+	public void setBild(String param) {
+		this.bild = param;
+	}
+
+	public boolean getEditable() {
+		return editable;
+	}
+
+	public void setEditable(boolean param) {
+		this.editable = param;
 	}
 
 }
