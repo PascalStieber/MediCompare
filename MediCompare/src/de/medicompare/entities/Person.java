@@ -3,16 +3,11 @@ package de.medicompare.entities;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import de.medicompare.entities.GesamtBestellung;
-import java.util.Collection;
-import javax.persistence.OneToMany;
-import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.AUTO;
-import static javax.persistence.GenerationType.SEQUENCE;
-import static javax.persistence.GenerationType.IDENTITY;
-import static javax.persistence.GenerationType.TABLE;
+import javax.persistence.Transient;
+import javax.persistence.Version;
 
 @Entity
 @Table(name = "Person")
@@ -30,14 +25,27 @@ public class Person implements Serializable {
 	private String nachname;
 	private String emailAdresse;
 	private String passwort;
-	@OneToMany(mappedBy = "person")
-	private Collection<GesamtBestellung> gesamtBestellung;
+	@Version
+	private int versionNr;
+	@Transient
+	private boolean editable;
+	
+	
 	public long getId() {
 		return id;
 	}
 
+	
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public boolean isEditable() {
+		return editable;
+	}
+
+	public void setEditable(boolean editable) {
+		this.editable = editable;
 	}
 
 	public String getVorname() {
@@ -70,14 +78,6 @@ public class Person implements Serializable {
 
 	public void setPasswort(String param) {
 		this.passwort = param;
-	}
-
-	public Collection<GesamtBestellung> getGesamtBestellung() {
-	    return gesamtBestellung;
-	}
-
-	public void setGesamtBestellung(Collection<GesamtBestellung> param) {
-	    this.gesamtBestellung = param;
 	}
 
 }

@@ -4,23 +4,25 @@
          
 <ui:composition template="/WEB-INF/templates/default.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
 
+
 <ui:define name="content">
-
-
-
-	<div id="categories">
- 		<ui:include src="/faces/admin_newMedikament.xhtml"></ui:include>
+	
+ 	<div id="categories">
+ 		<ui:include src="/faces/categories.xhtml"></ui:include>
  	</div>
  	
  	<div id="searchResult">
-		<ui:include src="/faces/admin_medikamente.xhtml"></ui:include>
+		
  	</div>
-	
  	
+ 	<div id="offerOfTheDay">
+ 		<ui:include src="/faces/offerOfTheDay.xhtml"></ui:include>
+ 	</div>
+
 </ui:define>
 </ui:composition>

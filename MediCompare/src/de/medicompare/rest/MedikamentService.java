@@ -43,7 +43,7 @@ public class MedikamentService {
 	@Path("/{id:[0-9][0-9]*}")
 	@Produces("application/json")
 	public Response findById(@PathParam("id") final Long id) {
-		List<Medikament> lMedikamentList = mMedikamentControl.findMedikamentByID(id);		
+		Medikament lMedikamentList = mMedikamentControl.findMedikamentByID(id);		
 		return Response.ok(lMedikamentList).build();
 	}
 

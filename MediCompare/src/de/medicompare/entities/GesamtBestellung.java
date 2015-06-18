@@ -3,15 +3,23 @@ package de.medicompare.entities;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import de.medicompare.entities.Person;
-import de.medicompare.entities.Medikament;
-import javax.persistence.ManyToOne;
-import java.util.Collection;
-import javax.persistence.ManyToMany;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.QueryHint;
+import javax.persistence.Version;
 
 @Entity
+
+@NamedQueries({
+	@NamedQuery(
+			name = "GesamtBestellung.findAll", query = "SELECT gb FROM GesamtBestellung gb",
+			hints = {
+					@QueryHint(name="org.hibernate.cacheable", value="true")
+					}
+)})
 public class GesamtBestellung implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -24,11 +32,13 @@ public class GesamtBestellung implements Serializable {
 	private long id;
 	@ManyToOne
 	private Person person;
-	@ManyToMany(mappedBy = "gesamtBestellung")
-	private Collection<Medikament> medikament;
+	@ManyToOne
+	private Medikament medikament;
 	public long getId() {
 		return id;
 	}
+	@Version
+	private int versionNr;
 
 	public void setId(long id) {
 		this.id = id;
@@ -42,11 +52,11 @@ public class GesamtBestellung implements Serializable {
 	    this.person = param;
 	}
 
-	public Collection<Medikament> getMedikament() {
+	public Medikament getMedikament() {
 	    return medikament;
 	}
 
-	public void setMedikament(Collection<Medikament> param) {
+	public void setMedikament(Medikament param) {
 	    this.medikament = param;
 	}
 

@@ -1,25 +1,32 @@
 package de.medicompare.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 
 import javax.persistence.Basic;
+import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.QueryHint;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.persistence.Version;
 
 @NamedQueries({
-		@NamedQuery(name = "Medikament.findAll", query = "SELECT m FROM Medikament m"),
+		@NamedQuery(
+				name = "Medikament.findAll", query = "SELECT m FROM Medikament m",
+				hints = {
+						@QueryHint(name="org.hibernate.cacheable", value="true")
+						}
+				),						
 		@NamedQuery(name = "Medikament.findByPZN", query = "SELECT m FROM Medikament m WHERE m.pzn = :pzn"),
 		@NamedQuery(name = "Medikament.findByID", query = "SELECT m FROM Medikament m WHERE m.id = :id") })
 @Entity
 @Table(name = "Medikament")
+@Cacheable
 public class Medikament implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -34,13 +41,13 @@ public class Medikament implements Serializable {
 	private String hersteller;
 	private String anzahlPackungsInhalt;
 	private String pzn;
-	@ManyToMany
-	private Collection<GesamtBestellung> gesamtBestellung;
 	@Lob
 	@Basic
 	private String bild;
 	@Transient
 	private boolean editable;
+	@Version
+	private int versionNr;
 
 	public long getId() {
 		return id;
@@ -82,14 +89,6 @@ public class Medikament implements Serializable {
 		this.pzn = param;
 	}
 
-	public Collection<GesamtBestellung> getGesamtBestellung() {
-		return gesamtBestellung;
-	}
-
-	public void setGesamtBestellung(Collection<GesamtBestellung> param) {
-		this.gesamtBestellung = param;
-	}
-
 	public String getBild() {
 		return bild;
 	}
@@ -98,7 +97,7 @@ public class Medikament implements Serializable {
 		this.bild = param;
 	}
 
-	public boolean getEditable() {
+	public boolean isEditable() {
 		return editable;
 	}
 

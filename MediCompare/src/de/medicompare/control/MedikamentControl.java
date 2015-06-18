@@ -12,12 +12,11 @@ import javax.persistence.TypedQuery;
 
 import de.medicompare.entities.Medikament;
 
-//@Stateless
 @Stateful
 @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 public class MedikamentControl {
 	
-	@PersistenceContext(type=PersistenceContextType.EXTENDED, unitName="MediCompare")
+	@PersistenceContext(type = PersistenceContextType.EXTENDED, unitName="MediCompare")
 //	@PersistenceContext
 	private EntityManager entityManager;
 
@@ -33,34 +32,49 @@ public class MedikamentControl {
 	public Medikament updateMedikament(Medikament pMedikament){
 		entityManager.merge(pMedikament);
 		entityManager.flush();
-		entityManager.refresh(pMedikament);
 		return pMedikament;
 	}
 	
+	public Medikament findMedikamentByID(Long pId){
+		Medikament lMedikament = entityManager.find(Medikament.class, pId);
+		return lMedikament;
+	}
 	
-	public List<Medikament> findMedikamentByID(Long pId){
+	public List<Medikament> findMedikamentByIDWithNamedQuery(Long pId){
+		entityManager.clear();
 		TypedQuery<Medikament> query= entityManager.createNamedQuery("Medikament.findByID", Medikament.class);
 		query.setParameter("id", pId);
 		List<Medikament> lMedikament = query.getResultList();
-		
-//		Query query = entityManager.createNamedQuery("SELECT m FROM Medikament m");
-//		List<Medikament> lMedikament = query.getResultList();
-		
 		return lMedikament;
 	}
 	
 	public List<Medikament> findAllMedikamente(){
+		//Entweder alle Objekte am PersistenceContext detachen...
+		entityManager.clear();
 		TypedQuery<Medikament> query= entityManager.createNamedQuery("Medikament.findAll", Medikament.class);
-		List<Medikament> lMedikament = query.getResultList();
-		return lMedikament;
+		//geht auch...
+//		Query query = entityManager.createQuery("SELECT m FROM Medikament m");
+		
+		
+		//Die Queries müssen von Hand auf Cacheable gesetzt werden, wenn 'hints' in der Entity an NamedQuery fehlt
+//		query.setHint("org.hibernate.cacheable", true);
+		List<Medikament> lMedikamentListe = query.getResultList();
+		
+		//oder alle Objekte refreshen.
+//		for (Medikament lMedikament : lMedikamentListe) {
+//			entityManager.refresh(lMedikament);
+//		}
+		
+	
+		return lMedikamentListe;
 	}
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public void deleteMedikament(Medikament pMedikament) {
-		entityManager.remove(pMedikament);
-		entityManager.flush();
-		entityManager.refresh(pMedikament);
-		
+//		Medikament foundMedikament = entityManager.find(Medikament.class, pMedikament.getId());
+//		entityManager.remove(foundMedikament);
+		entityManager.remove(entityManager.contains(pMedikament) ? pMedikament : entityManager.merge(pMedikament));
+		entityManager.flush();		
 	}
 	
 	
