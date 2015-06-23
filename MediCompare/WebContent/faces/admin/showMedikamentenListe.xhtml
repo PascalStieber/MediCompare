@@ -1,0 +1,61 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<h:form enctype="multipart/form-data">
+			<h:dataTable value="#{administration.medikamentenListe}" var="medikament" 
+				styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row">
+	 	  		<h:column>
+	    			<f:facet name="header">ID</f:facet>
+	    			#{medikament.id}
+	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">Bild</f:facet>
+	    			<div id="productPicture"><h:graphicImage style="max-width:100%;max-height:100%;" value="/ImageService/?id=#{medikament.id}" rendered="#{not medikament.editable}" /></div>
+	    			<h:inputFile id="file" value="#{administration.file}" rendered="#{medikament.editable}"/>
+	    		</h:column>
+	 			<h:column>
+	    			<f:facet name="header">PZN</f:facet>
+	    			<h:inputText value="#{medikament.pzn}" size="5" rendered="#{medikament.editable}" />
+	    			<h:outputText value="#{medikament.pzn}" rendered="#{not medikament.editable}" />
+	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">Bezeichnung</f:facet>
+	    			<h:inputText value="#{medikament.bezeichnung}" size="10" rendered="#{medikament.editable}" />
+	    			<h:outputText value="#{medikament.bezeichnung}" rendered="#{not medikament.editable}" />
+	    			
+	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">Hersteller</f:facet>
+	    			<h:inputText value="#{medikament.hersteller}" size="10" rendered="#{medikament.editable}" />
+	    			<h:outputText value="#{medikament.hersteller}" rendered="#{not medikament.editable}" />
+	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">Anz. Packungsinhalt</f:facet>
+	    			<h:inputText value="#{medikament.anzahlPackungsInhalt}" size="10" rendered="#{medikament.editable}" />
+	    			<h:outputText value="#{medikament.anzahlPackungsInhalt}" rendered="#{not medikament.editable}" />
+	    			
+	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">OfferOfTheDay</f:facet>
+	    			<h:selectBooleanCheckbox value="#{medikament.offerOfTheDay}" />
+	    		</h:column>
+	    		<h:column>    		
+	    			<f:facet name="header">Action</f:facet>	 
+	    			<h:commandLink value="Edit" action="#{administration.editMedikament(medikament)}" rendered="#{not medikament.editable}" />
+	    			|<h:commandLink value="Löschen" action="#{administration.loescheMedikament(medikament)}"/>
+	    			|<h:commandLink value="Änderung speichern" action="#{administration.speicherMedikament(medikament)}" rendered="#{medikament.editable}" />
+	    		</h:column> 
+	    		<h:column>    		
+	    			<f:facet name="header">Personen Daten</f:facet>	 	    			
+	    			<h:commandLink value="zeigePerson" action="#{administration.getPersonenFromMedikament(medikament)}"  />
+	    			<h:outputText value="#{administration.getPersonenFromMedikament(medikament).vorname}" />
+	    			<!-- <h:commandButton action="#{administration.getPersonenFromMedikament(medikament)}" value="submit" >
+	    			<f:ajax render="@all"></f:ajax>
+	    			</h:commandButton> -->
+	    		</h:column>      		
+	        </h:dataTable>
+        </h:form>
+</ui:composition>

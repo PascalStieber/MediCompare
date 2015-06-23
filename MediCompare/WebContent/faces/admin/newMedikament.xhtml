@@ -1,0 +1,18 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+	<h4>Neues Medikament anlegen:</h4>
+	<h:form id="form" enctype="multipart/form-data">	
+		PZN:<h:inputText value="#{administration.medikament.pzn}"  /><br />
+		Hersteller:<h:inputText value="#{administration.medikament.hersteller}"  /><br />
+		Bezeichnung:<h:inputText value="#{administration.medikament.bezeichnung}"  /><br />
+		Anzahl Packungsinhalt:<h:inputText value="#{administration.medikament.anzahlPackungsInhalt}"  /><br />
+		<h:selectBooleanCheckbox value="#{medikament.offerOfTheDay}" label="Angebot d. Tages"/><br />
+		<h:inputFile id="file" value="#{administration.file}"/><br />
+		<h:commandButton action="#{administration.speicherMedikament}" value="Medikament Speichern" />
+		
+	</h:form>
+</ui:composition>
+		

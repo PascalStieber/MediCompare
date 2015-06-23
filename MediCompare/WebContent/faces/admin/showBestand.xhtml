@@ -1,0 +1,50 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<h:form>
+			<h:dataTable value="#{administration.medikamentenListe}" var="medikament">
+	 	  		<h:column>
+	    			<f:facet name="header">ID</f:facet>
+	    			#{medikament.id}
+	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">Bild</f:facet>
+	    			<h:graphicImage value="#{medikament.bild}" />
+	    		</h:column>
+	 			<h:column>
+	    			<f:facet name="header">PZN</f:facet>
+	    			<h:inputText value="#{medikament.pzn}" size="10" rendered="#{medikament.editable}" />
+	    			<h:outputText value="#{medikament.pzn}" rendered="#{not medikament.editable}" />
+	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">Bezeichnung</f:facet>
+	    			<h:inputText value="#{medikament.bezeichnung}" size="10" rendered="#{medikament.editable}" />
+	    			<h:outputText value="#{medikament.bezeichnung}" rendered="#{not medikament.editable}" />
+	    			
+	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">Hersteller</f:facet>
+	    			<h:inputText value="#{medikament.hersteller}" size="10" rendered="#{medikament.editable}" />
+	    			<h:outputText value="#{medikament.hersteller}" rendered="#{not medikament.editable}" />
+	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">Anz. Packungsinhalt</f:facet>
+	    			<h:inputText value="#{medikament.anzahlPackungsInhalt}" size="10" rendered="#{medikament.editable}" />
+	    			<h:outputText value="#{medikament.anzahlPackungsInhalt}" rendered="#{not medikament.editable}" />
+	    			
+	    		</h:column>
+	    		<h:column>    		
+	    			<f:facet name="header">Action</f:facet>	 
+	    			<h:commandLink value="Edit" action="#{administration.editMedikament(medikament)}" rendered="#{not medikament.editable}" />
+	    			|<h:commandLink value="Löschen" action="#{administration.loescheMedikament(medikament)}"/>
+	    			|<h:commandLink value="Änderung speichern" action="#{administration.speicherMedikament(medikament)}" rendered="#{medikament.editable}" />
+	    		</h:column> 
+	    		<h:column>    		
+	    			<f:facet name="header">Personen Daten</f:facet>	 	    			
+	    			<h:commandLink value="zeigePerson" action="#{administration.getPersonenFromMedikament(medikament)}"  />
+	    			<h:outputText value="#{administration.getPersonenFromMedikament(medikament).vorname}" />
+	    		</h:column>      		
+	        </h:dataTable>
+        </h:form>
+</ui:composition>
