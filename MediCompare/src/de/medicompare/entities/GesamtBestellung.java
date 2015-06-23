@@ -8,18 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.QueryHint;
 import javax.persistence.Version;
 
 @Entity
 
-@NamedQueries({
-	@NamedQuery(
-			name = "GesamtBestellung.findAll", query = "SELECT gb FROM GesamtBestellung gb",
-			hints = {
-					@QueryHint(name="org.hibernate.cacheable", value="true")
-					}
-)})
+@NamedQueries({@NamedQuery(name = "GesamtBestellung.findAll", query = "SELECT gb FROM GesamtBestellung gb")})
 public class GesamtBestellung implements Serializable {
 
 	private static final long serialVersionUID = 1L;

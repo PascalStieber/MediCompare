@@ -2,9 +2,42 @@
 	<entity>
 		<entity-name>de.medicompare.entities.GesamtBestellung</entity-name>
 		<entity-width>201</entity-width>
-		<entity-height>128</entity-height>
+		<entity-height>166</entity-height>
 		<entity-X-Coordinate>280</entity-X-Coordinate>
 		<entity-Y-Coordinate>20</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>de.medicompare.entities.Bestand</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>168</entity-height>
+		<entity-X-Coordinate>705</entity-X-Coordinate>
+		<entity-Y-Coordinate>440</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>de.medicompare.entities.AdminWebsite</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>128</entity-height>
+		<entity-X-Coordinate>80</entity-X-Coordinate>
+		<entity-Y-Coordinate>456</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>de.medicompare.entities.ShopAnbieter</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>128</entity-height>
+		<entity-X-Coordinate>400</entity-X-Coordinate>
+		<entity-Y-Coordinate>440</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>
@@ -24,7 +57,7 @@
 	<entity>
 		<entity-name>de.medicompare.entities.Person</entity-name>
 		<entity-width>120</entity-width>
-		<entity-height>188</entity-height>
+		<entity-height>208</entity-height>
 		<entity-X-Coordinate>20</entity-X-Coordinate>
 		<entity-Y-Coordinate>20</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>

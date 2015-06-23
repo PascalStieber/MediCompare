@@ -16,7 +16,8 @@ import de.medicompare.entities.Medikament;
 @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 public class MedikamentControl {
 	
-	@PersistenceContext(type = PersistenceContextType.EXTENDED, unitName="MediCompare")
+//	@PersistenceContext(type = PersistenceContextType.EXTENDED, unitName="MediCompare")
+	@PersistenceContext(type=PersistenceContextType.EXTENDED, unitName="ExampleDS")
 //	@PersistenceContext
 	private EntityManager entityManager;
 
@@ -32,11 +33,20 @@ public class MedikamentControl {
 	public Medikament updateMedikament(Medikament pMedikament){
 		entityManager.merge(pMedikament);
 		entityManager.flush();
+		entityManager.refresh(pMedikament);
 		return pMedikament;
 	}
 	
 	public Medikament findMedikamentByID(Long pId){
+		//der Tatsache geschuldet, dass ein byte[] scheinbar trotz abschalten des 2nd level und query caches
+		//gecached (wahrscheinlich sogar im 1st level cache) wird, muss das object komplett vom @persistenceContext
+		//getrennt und somit neu geladen werden
+		//@Edit:
+		//es reicht die refresh Methode für das Objekt aufzurufen
+//		entityManager.clear();
+		
 		Medikament lMedikament = entityManager.find(Medikament.class, pId);
+		entityManager.refresh(lMedikament);
 		return lMedikament;
 	}
 	
@@ -76,6 +86,16 @@ public class MedikamentControl {
 		entityManager.remove(entityManager.contains(pMedikament) ? pMedikament : entityManager.merge(pMedikament));
 		entityManager.flush();		
 	}
+	
+	
+	public List<Medikament>  findOfferOfTheDay(){
+		TypedQuery<Medikament> query= entityManager.createNamedQuery("Medikament.findOfferOfTheDay", Medikament.class);
+		List<Medikament> lMedikamentListe = query.getResultList();
+		return lMedikamentListe ;
+	}
+
+
+
 	
 	
 }

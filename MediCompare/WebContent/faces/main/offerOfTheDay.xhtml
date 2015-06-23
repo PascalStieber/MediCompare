@@ -1,0 +1,14 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+	<div id="contentHeader"> Offer of the day! </div>
+	
+	<p> Nur heute, unser Angebot des Tages für Sie!</p>
+	<div id="offerOfTheDayPicture"><h:graphicImage style="max-width:100%;max-height:100%;" value="/ImageService/?id=#{einkauf.offerOfTheDay.id}" /></div> 
+	<h:outputText value="#{einkauf.offerOfTheDay.bezeichnung}" />
+	<p>von </p>
+	<h:outputText value="#{einkauf.offerOfTheDay.hersteller}" />
+</ui:composition>
+		

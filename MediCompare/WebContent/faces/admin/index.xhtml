@@ -2,27 +2,28 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
          
-<ui:composition template="/WEB-INF/templates/default.xhtml"
+<ui:composition template="/faces/main/default.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:h="http://java.sun.com/jsf/html" 
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
 
-
 <ui:define name="content">
-	
- 	<div id="categories">
- 		<ui:include src="/faces/categories.xhtml"></ui:include>
+
+	<div id="offerOfTheDay">
+ 		<ui:include src="/faces/admin/navigateAdmin.xhtml"></ui:include>
+ 	</div>
+
+
+	<div id="categories">
+ 		<ui:include src="/faces/admin/newMedikament.xhtml"></ui:include>
  	</div>
  	
  	<div id="searchResult">
-		
+		<ui:include src="/faces/admin/showMedikamentenListe.xhtml"></ui:include>
  	</div>
+	
  	
- 	<div id="offerOfTheDay">
- 		<ui:include src="/faces/offerOfTheDay.xhtml"></ui:include>
- 	</div>
-
 </ui:define>
 </ui:composition>

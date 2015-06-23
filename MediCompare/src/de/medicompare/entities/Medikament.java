@@ -4,7 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.Basic;
 import javax.persistence.Cacheable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
@@ -23,6 +25,7 @@ import javax.persistence.Version;
 						}
 				),						
 		@NamedQuery(name = "Medikament.findByPZN", query = "SELECT m FROM Medikament m WHERE m.pzn = :pzn"),
+		@NamedQuery(name = "Medikament.findOfferOfTheDay", query = "SELECT m FROM Medikament m WHERE m.offerOfTheDay = true"),
 		@NamedQuery(name = "Medikament.findByID", query = "SELECT m FROM Medikament m WHERE m.id = :id") })
 @Entity
 @Table(name = "Medikament")
@@ -41,14 +44,17 @@ public class Medikament implements Serializable {
 	private String hersteller;
 	private String anzahlPackungsInhalt;
 	private String pzn;
+	private boolean offerOfTheDay;
+	
+	
+//	@Column(columnDefinition= "VARBINARY")
 	@Lob
-	@Basic
-	private String bild;
+	@Basic(fetch=FetchType.EAGER)
+	private byte[] bild;
 	@Transient
 	private boolean editable;
 	@Version
 	private int versionNr;
-
 	public long getId() {
 		return id;
 	}
@@ -89,11 +95,11 @@ public class Medikament implements Serializable {
 		this.pzn = param;
 	}
 
-	public String getBild() {
+	public byte[] getBild() {
 		return bild;
 	}
 
-	public void setBild(String param) {
+	public void setBild(byte[] param) {
 		this.bild = param;
 	}
 
@@ -103,6 +109,14 @@ public class Medikament implements Serializable {
 
 	public void setEditable(boolean param) {
 		this.editable = param;
+	}
+
+	public boolean isOfferOfTheDay() {
+		return offerOfTheDay;
+	}
+
+	public void setOfferOfTheDay(boolean offerOfTheDay) {
+		this.offerOfTheDay = offerOfTheDay;
 	}
 
 }

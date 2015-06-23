@@ -2,25 +2,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
          
-<ui:composition template="/WEB-INF/templates/default.xhtml"
+<ui:composition template="/faces/main/default.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html" 
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
 
 
 
 <ui:define name="content">
-
-
-
-	<div id="categories">
- 		<ui:include src="/faces/admin_newMedikament.xhtml"></ui:include>
+	
+	
+	<div id="offerOfTheDay">
+ 		<ui:include src="/faces/main/offerOfTheDay.xhtml"></ui:include>
  	</div>
  	
  	<div id="searchResult">
-		<ui:include src="/faces/admin_medikamente.xhtml"></ui:include>
+		<div id="contentHeader">Wir haben für Sie folgende Produkte gefunden:</div>
+		<br/>
+		<h:outputText id="medikamentID" value="#{einkauf.medikament.hersteller}" />
  	</div>
-	
  	
+ 	<div id="adviser">
+ 		<ui:include src="/faces/main/adviser.xhtml"></ui:include>
+ 	</div>
+ 	
+
+ 	
+
+
 </ui:define>
 </ui:composition>
