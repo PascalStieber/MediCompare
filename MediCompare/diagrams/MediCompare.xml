@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><entities>
 	<entity>
-		<entity-name>de.medicompare.entities.GesamtBestellung</entity-name>
-		<entity-width>201</entity-width>
-		<entity-height>166</entity-height>
-		<entity-X-Coordinate>280</entity-X-Coordinate>
-		<entity-Y-Coordinate>20</entity-Y-Coordinate>
+		<entity-name>de.medicompare.entities.Bestand</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>186</entity-height>
+		<entity-X-Coordinate>705</entity-X-Coordinate>
+		<entity-Y-Coordinate>440</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>
 	</entity>
 
 	<entity>
-		<entity-name>de.medicompare.entities.Bestand</entity-name>
-		<entity-width>120</entity-width>
-		<entity-height>168</entity-height>
-		<entity-X-Coordinate>705</entity-X-Coordinate>
-		<entity-Y-Coordinate>440</entity-Y-Coordinate>
+		<entity-name>de.medicompare.entities.GesamtBestellung</entity-name>
+		<entity-width>201</entity-width>
+		<entity-height>166</entity-height>
+		<entity-X-Coordinate>280</entity-X-Coordinate>
+		<entity-Y-Coordinate>20</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>
@@ -35,7 +35,7 @@
 	<entity>
 		<entity-name>de.medicompare.entities.ShopAnbieter</entity-name>
 		<entity-width>120</entity-width>
-		<entity-height>128</entity-height>
+		<entity-height>166</entity-height>
 		<entity-X-Coordinate>400</entity-X-Coordinate>
 		<entity-Y-Coordinate>440</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
@@ -46,7 +46,7 @@
 	<entity>
 		<entity-name>de.medicompare.entities.Medikament</entity-name>
 		<entity-width>161</entity-width>
-		<entity-height>228</entity-height>
+		<entity-height>286</entity-height>
 		<entity-X-Coordinate>620</entity-X-Coordinate>
 		<entity-Y-Coordinate>18</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>

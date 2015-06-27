@@ -16,8 +16,8 @@ import de.medicompare.entities.ShopAnbieter;
 @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 public class ShopAnbieterControl {
 
-//	@PersistenceContext(type=PersistenceContextType.EXTENDED, unitName="MediCompare")
-	@PersistenceContext(type=PersistenceContextType.EXTENDED, unitName="ExampleDS")
+	@PersistenceContext(type=PersistenceContextType.EXTENDED, unitName="MediCompare")
+//	@PersistenceContext(type=PersistenceContextType.EXTENDED, unitName="ExampleDS")
 	private EntityManager entityManager;
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)

@@ -16,8 +16,8 @@ import de.medicompare.entities.Medikament;
 @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 public class MedikamentControl {
 	
-//	@PersistenceContext(type = PersistenceContextType.EXTENDED, unitName="MediCompare")
-	@PersistenceContext(type=PersistenceContextType.EXTENDED, unitName="ExampleDS")
+	@PersistenceContext(type = PersistenceContextType.EXTENDED, unitName="MediCompare")
+//	@PersistenceContext(type=PersistenceContextType.EXTENDED, unitName="ExampleDS")
 //	@PersistenceContext
 	private EntityManager entityManager;
 
@@ -88,14 +88,11 @@ public class MedikamentControl {
 	}
 	
 	
-	public List<Medikament>  findOfferOfTheDay(){
+	public List<Medikament> findOfferOfTheDay(){
 		TypedQuery<Medikament> query= entityManager.createNamedQuery("Medikament.findOfferOfTheDay", Medikament.class);
 		List<Medikament> lMedikamentListe = query.getResultList();
 		return lMedikamentListe ;
 	}
 
-
-
-	
 	
 }

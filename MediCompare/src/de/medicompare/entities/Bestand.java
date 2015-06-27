@@ -8,17 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-
 import de.medicompare.entities.Medikament;
+import javax.persistence.ManyToOne;
 import de.medicompare.entities.ShopAnbieter;
-
-import javax.persistence.OneToOne;
-import javax.persistence.MapsId;
-import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name = "Bestand")
-@NamedQueries({@NamedQuery(name = "Bestand.findAll", query = "SELECT b FROM Bestand b")})
+@NamedQueries({@NamedQuery(name = "Bestand.findAll", query = "SELECT b FROM Bestand b"),
+			   @NamedQuery(name = "Bestand.searchUserTerm", query = "SELECT b FROM Bestand b JOIN b.medikament m JOIN b.shopAnbieter sa WHERE m.bezeichnung = :userTerm OR m.hersteller = :userTerm OR sa.firmenName = :userTerm ")})
 public class Bestand implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -31,9 +28,9 @@ public class Bestand implements Serializable {
 	private long id;
 	private String preis;
 	private String aktualisierungsDatum;
-	@OneToOne
+	@ManyToOne
 	private Medikament medikament;
-	@OneToOne
+	@ManyToOne
 	private ShopAnbieter shopAnbieter;
 	public long getId() {
 		return id;

@@ -15,8 +15,8 @@ import de.medicompare.entities.Person;
 @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 public class PersonControl {
 
-//	@PersistenceContext(type=PersistenceContextType.EXTENDED, unitName="MediCompare")
-	@PersistenceContext(type=PersistenceContextType.EXTENDED, unitName="ExampleDS")
+	@PersistenceContext(type=PersistenceContextType.EXTENDED, unitName="MediCompare")
+//	@PersistenceContext(type=PersistenceContextType.EXTENDED, unitName="ExampleDS")
 	private EntityManager entityManager;
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)

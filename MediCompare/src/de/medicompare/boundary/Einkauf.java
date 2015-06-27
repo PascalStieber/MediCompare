@@ -2,13 +2,14 @@ package de.medicompare.boundary;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.Stateful;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import de.medicompare.control.BestandControl;
 import de.medicompare.control.MedikamentControl;
+import de.medicompare.entities.Bestand;
 import de.medicompare.entities.Medikament;
 
 @SessionScoped
@@ -18,12 +19,13 @@ public class Einkauf {
 	
 	@Inject
 	MedikamentControl medikamentControl = null;
+	@Inject
+	BestandControl bestandControl = null;
 	
 	
-	
-	private List<Medikament> medikamentenListe = null;
+	private List<Bestand> bestandsListe = null;
 	private Medikament medikament = null;
-	private Long suchBegriff = 0L;
+	private String suchBegriff = "Suchbegriff...";
 	private Medikament offerOfTheDay = null;
 	
 	
@@ -42,16 +44,16 @@ public class Einkauf {
 		this.offerOfTheDay = offerOfTheDay;
 	}
 	
-	public Long getSuchBegriff() {
+	public String getSuchBegriff() {
 		return suchBegriff;
 	}
 	
-	public void setSuchBegriff(Long pSuchBegriff) {
+	public void setSuchBegriff(String pSuchBegriff) {
 		this.suchBegriff = pSuchBegriff;
 	}
 
-	public List<Medikament> getMedikamentenListe(){
-		return this.medikamentenListe;
+	public List<Bestand> getBestandsListe(){
+		return this.bestandsListe;
 	}
 	
 	
@@ -60,9 +62,8 @@ public class Einkauf {
 	}
 
 	
-	
 	public void sucheMedikamente(){
-		this.medikament = medikamentControl.findMedikamentByID(suchBegriff);
+		this.bestandsListe = bestandControl.searchUserTermInBestand(suchBegriff);
 	}
 	
 

@@ -6,7 +6,8 @@
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 
 
@@ -21,8 +22,25 @@
  	<div id="searchResult">
 		<div id="contentHeader">Wir haben für Sie folgende Produkte gefunden:</div>
 		<br/>
-		<h:outputText id="medikamentID" value="#{einkauf.medikament.hersteller}" />
+		
+		<!-- <h:outputText id="medikamentID" value="#{einkauf.bestandsListe}" /> -->
+		<ui:repeat id="medikamentID" var="bestand" value="#{einkauf.bestandsListe}">
+			<h:outputText value="#{bestand.medikament.anzahlPackungsInhalt}" />
+			<h:outputText value="#{bestand.medikament.bezeichnung}" />
+			<h:outputText value="#{bestand.medikament.hersteller}" />
+			<div id="productPicture">
+				<h:graphicImage style="max-width:100%;max-height:100%;" value="/ImageService/?id=#{bestand.medikament.id}" />
+			</div>
+		</ui:repeat>
+		
+		
+		<p:contentFlow value="#{imagesView.medikamentenListe}" var="medikament" styleClass="content-flow">
+			<p:graphicImage value="/ImageService/?id=#{medikament.id}" styleClass="content" />
+		    <div class="caption">#{medikament.id}</div>
+		</p:contentFlow>
  	</div>
+ 	
+ 	
  	
  	<div id="adviser">
  		<ui:include src="/faces/main/adviser.xhtml"></ui:include>

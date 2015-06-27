@@ -1,5 +1,9 @@
 package de.medicompare.boundary;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.ejb.Stateful;
@@ -55,6 +59,17 @@ public class InitApplication {
 		medikament1.setHersteller("MYLAN dura");
 		medikament1.setPzn("3952149");
 		medikament1.setOfferOfTheDay(true);
+		File lFile1 = new File("F:\\\\Development_Repos\\git\\MediCompare\\MediCompare\\WebContent\\resources\\img\\produktBilder\\diclofenac_dura.jpg");
+		byte[] lbyte1 = new byte[(int)lFile1.length()];
+		
+		try {
+			FileInputStream lFileIS1 = new FileInputStream(lFile1);
+			lFileIS1.read(lbyte1);
+			lFileIS1.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		medikament1.setBild(lbyte1);
 		medikamentControl.saveMedikament(medikament1);
 		
 		Medikament medikament2 = new Medikament();
@@ -62,6 +77,17 @@ public class InitApplication {
 		medikament2.setAnzahlPackungsInhalt("50");
 		medikament2.setHersteller("BAYER");
 		medikament2.setPzn("1266177");
+		File lFile2 = new File("F:\\\\Development_Repos\\git\\MediCompare\\MediCompare\\WebContent\\resources\\img\\produktBilder\\ketostix.jpg");
+		byte[] lbyte2 = new byte[(int)lFile2.length()];
+		
+		try {
+			FileInputStream lFileIS2 = new FileInputStream(lFile2);
+			lFileIS2.read(lbyte2);
+			lFileIS2.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		medikament2.setBild(lbyte2);
 		medikamentControl.saveMedikament(medikament2);
 		
 		Medikament medikament3 = new Medikament();
@@ -69,6 +95,17 @@ public class InitApplication {
 		medikament3.setAnzahlPackungsInhalt("24");
 		medikament3.setHersteller("DoloDobendan");
 		medikament3.setPzn("06865646");
+		File lFile3 = new File("F:\\\\Development_Repos\\git\\MediCompare\\MediCompare\\WebContent\\resources\\img\\produktBilder\\dolodobendan.jpg");
+		byte[] lbyte3 = new byte[(int)lFile3.length()];
+		
+		try {
+			FileInputStream lFileIS3 = new FileInputStream(lFile3);
+			lFileIS3.read(lbyte3);
+			lFileIS3.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		medikament3.setBild(lbyte3);
 		medikamentControl.saveMedikament(medikament3);
 		
 		Medikament medikament4 = new Medikament();
@@ -76,6 +113,17 @@ public class InitApplication {
 		medikament4.setAnzahlPackungsInhalt("30");
 		medikament4.setHersteller("DocMorris");
 		medikament4.setPzn("7580420");
+		File lFile4 = new File("F:\\\\Development_Repos\\git\\MediCompare\\MediCompare\\WebContent\\resources\\img\\produktBilder\\ibuprofen.jpg");
+		byte[] lbyte4 = new byte[(int)lFile4.length()];
+		
+		try {
+			FileInputStream lFileIS4 = new FileInputStream(lFile4);
+			lFileIS4.read(lbyte4);
+			lFileIS4.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		medikament4.setBild(lbyte4);
 		medikamentControl.saveMedikament(medikament4);
 		
 		ArrayList<Medikament> lMedikamentenListe = new ArrayList<Medikament>();

@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Version;
+import de.medicompare.entities.Medikament;
 
 @Entity
 
@@ -25,14 +26,13 @@ public class GesamtBestellung implements Serializable {
 	private long id;
 	@ManyToOne
 	private Person person;
-	@ManyToOne
-	private Medikament medikament;
 	public long getId() {
 		return id;
 	}
 	@Version
 	private int versionNr;
-
+	@ManyToOne
+	private Medikament medikament;
 	public void setId(long id) {
 		this.id = id;
 	}
