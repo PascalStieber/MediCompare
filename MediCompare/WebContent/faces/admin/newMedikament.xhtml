@@ -9,7 +9,7 @@
 		Hersteller:<h:inputText value="#{administration.medikament.hersteller}"  /><br />
 		Bezeichnung:<h:inputText value="#{administration.medikament.bezeichnung}"  /><br />
 		Anzahl Packungsinhalt:<h:inputText value="#{administration.medikament.anzahlPackungsInhalt}"  /><br />
-		<h:selectBooleanCheckbox value="#{medikament.offerOfTheDay}" label="Angebot d. Tages"/><br />
+		<h:selectBooleanCheckbox value="#{administration.medikament.offerOfTheDay}" label="Angebot d. Tages"/><br />
 		<h:inputFile id="file" value="#{administration.file}"/><br />
 		<h:commandButton action="#{administration.speicherMedikament}" value="Medikament Speichern" />
 		
